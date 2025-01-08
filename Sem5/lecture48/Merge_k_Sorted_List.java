@@ -1,6 +1,5 @@
 package Sem5.lecture48;
 import java.util.*;
-import java.util.List;
 
 class ListNode {
     int val;
@@ -13,7 +12,7 @@ class ListNode {
         this.val = val; this.next = next;
     }
 }
-public class Merge_k_Sorted_Lists {
+public class Merge_k_Sorted_List {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();

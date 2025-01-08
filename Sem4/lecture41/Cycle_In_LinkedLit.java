@@ -1,6 +1,6 @@
 package Sem4.lecture41;
 
-public class Cycle_In_LinkedList {
+public class Cycle_In_LinkedLit {
     class Node {
         int val;
         Node next;
@@ -60,7 +60,7 @@ public class Cycle_In_LinkedList {
         tail.next = nn;
     }
     public static void main(String[] args) throws Exception{
-        Cycle_In_LinkedList cl = new Cycle_In_LinkedList();
+        Cycle_In_LinkedLit cl = new Cycle_In_LinkedLit();
         cl.addLast(10);
         cl.addLast(20);
         cl.addLast(30);

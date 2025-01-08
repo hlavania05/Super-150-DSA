@@ -1,48 +1,39 @@
 package HashMap_Assignment_9;
 
 import java.util.*;
+public class Frequent_Elements_inArray {
+    public static void main (String args[]) {
+        Scanner scn = new Scanner(System.in);
+        int len = scn.nextInt();
+        int k = scn.nextInt();
+        int[] arr = new int[len];
+        for (int i = 0; i < len; i++) {
+            arr[i] = scn.nextInt();
+        }
 
-public class Top_K_frequent_numbers {
-    public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        int tests = input.nextInt(); // Number of test cases
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for(int num : arr) {
+            map.put(num, map.getOrDefault(num, 0) + 1);
+        }
 
-        while (tests-- > 0) {
-            int length = input.nextInt(); // Number of elements
-            int topCount = input.nextInt(); // Number of top elements to find
-            int[] numbers = new int[length];
-            for (int index = 0; index < length; index++) {
-                numbers[index] = input.nextInt(); // Read elements
+        PriorityQueue<int[]> maxHeap = new PriorityQueue<>(new Comparator<int[]>() {
+            @Override
+            public int compare(int[] o1, int[] o2) {
+                return o2[1] - o1[1];
             }
+        });
 
-            HashMap<Integer, Integer> frequencyMap = new HashMap<>();
-            List<Integer> resultList = new ArrayList<>();
+        for(int keeyy : map.keySet()){
+            maxHeap.add(new int[]{keeyy, map.get(keeyy)});
+        }
 
-            for (int index = 0; index < length; index++) {
-                int currentNum = numbers[index];
-                frequencyMap.put(currentNum, frequencyMap.getOrDefault(currentNum, 0) + 1); // Update frequency
-                List<Integer> sortedKeys = new ArrayList<>(frequencyMap.keySet());
-
-                Collections.sort(sortedKeys, new Comparator<Integer>() {
-                    @Override
-                    public int compare(Integer a, Integer b) {
-                        int freqA = frequencyMap.get(a); // Frequency of a
-                        int freqB = frequencyMap.get(b); // Frequency of b
-                        if (freqA == freqB)
-                            return a - b; // Sort by value if frequencies are equal
-                        return freqB - freqA; // Sort by frequency
-                    }
-                });
-
-                for (int sortedIndex = 0; sortedIndex < Math.min(topCount, sortedKeys.size()); sortedIndex++) {
-                    resultList.add(sortedKeys.get(sortedIndex)); // Add top elements
-                }
-            }
-
-            for (int number : resultList) {
-                System.out.print(number + " "); // Print the result
-            }
-            System.out.println();
+        List<Integer> lst = new ArrayList<>();
+        while(k-- > 0 && !maxHeap.isEmpty()){
+            lst.add(maxHeap.poll()[0]);
+        }
+        Collections.sort(lst);
+        for(int Item : lst) {
+            System.out.print(Item + " ");
         }
     }
 }

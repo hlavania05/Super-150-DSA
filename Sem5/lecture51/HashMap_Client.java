@@ -1,4 +1,4 @@
-package Sem5.lecture52;
+package Sem5.lecture51;
 
 public class HashMap_Client {
 

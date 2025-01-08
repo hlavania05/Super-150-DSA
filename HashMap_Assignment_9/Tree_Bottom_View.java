@@ -12,7 +12,7 @@ class Node_ {
     }
 }
 
-public class BottomView_of_BinaryTree {
+public class Tree_Bottom_View {
 
 public static void main(String[] args) {
     Scanner scnner = new Scanner(System.in);
